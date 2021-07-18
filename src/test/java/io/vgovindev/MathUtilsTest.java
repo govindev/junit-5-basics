@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("When running MathUtils")
@@ -22,6 +23,7 @@ class MathUtilsTest {
 
 	@Nested
 	@DisplayName("add method")
+	@Tag("Math")
 	class AddTest {
 		@Test
 		@DisplayName("when adding two positive numbers")
@@ -33,13 +35,14 @@ class MathUtilsTest {
 		@Test
 		@DisplayName("when adding the two negative numbers")
 		void testAddNegative() {
-			assertEquals(-1, mathUtils.add(-1, -1), () -> "should return the right sum");
+			assertEquals(-2, mathUtils.add(-1, -1), () -> "should return the right sum");
 
 		}
 
 	}
 
 	@Test
+	@Tag("Math")
 	@DisplayName("multiply method")
 	void testMultiply() {
 		// assertEquals(4, mathUtils.multiply(2, 2), "Should return the right product");
@@ -49,6 +52,7 @@ class MathUtilsTest {
 	}
 
 	@Test
+	@Tag("Math")
 	void testDivide() {
 		// assumeTrue(value); -> Run only the test if this value is true.
 		// For eg : boolean isServerup = false;
@@ -57,8 +61,9 @@ class MathUtilsTest {
 	}
 
 	// @Test
-	@RepeatedTest(3)
-	void testComputeCircleArea(RepetitionInfo repetitionInfo) {
+	// @RepeatedTest(3)
+	@Tag("Circle")
+	void testComputeCircleArea() {
 		// Useful methods are
 		// repetitionInfo.getCurrentRepetition();
 		// repetitionInfo.getTotalRepetitions();

@@ -11,14 +11,21 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.TestReporter;
 
 @DisplayName("When running MathUtils")
 class MathUtilsTest {
 	MathUtils mathUtils;
+	TestInfo testInfo;
+	TestReporter testReporter;
 
 	@BeforeEach
-	void init() {
+	void init(TestInfo testInfo, TestReporter testReporter) {
+		this.testInfo = testInfo;
+		this.testReporter = testReporter;
 		mathUtils = new MathUtils();
+		testReporter.publishEntry("Running " + testInfo.getDisplayName() + ", with tags : " + testInfo.getTags());
 	}
 
 	@Nested
@@ -45,6 +52,10 @@ class MathUtilsTest {
 	@Tag("Math")
 	@DisplayName("multiply method")
 	void testMultiply() {
+		// System.out.println("Running " + testInfo.getDisplayName() + ", with tags : "
+		// + testInfo.getTags());
+		// testReporter.publishEntry("Running " + testInfo.getDisplayName() + ", with
+		// tags : " + testInfo.getTags());
 		// assertEquals(4, mathUtils.multiply(2, 2), "Should return the right product");
 		assertAll(() -> assertEquals(4, mathUtils.multiply(2, 2)), () -> assertEquals(0, mathUtils.multiply(2, 0)),
 				() -> assertEquals(-2, mathUtils.multiply(2, -1)));

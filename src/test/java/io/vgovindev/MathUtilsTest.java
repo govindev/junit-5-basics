@@ -26,8 +26,20 @@ class MathUtilsTest {
 	}
 
 	@Test
+	@DisplayName("multiply method")
+	void testMultiply() {
+		// assertEquals(4, mathUtils.multiply(2, 2), "Should return the right product");
+		assertAll(() -> assertEquals(4, mathUtils.multiply(2, 2)), 
+				() -> assertEquals(0, mathUtils.multiply(2, 0)),
+				() -> assertEquals(-2, mathUtils.multiply(2, -1)));
+
+	}
+
+	@Test
 	void testDivide() {
-		// assumeTrue(value); -> Run only the test if this value is true
+		// assumeTrue(value); -> Run only the test if this value is true.
+		// For eg : boolean isServerup = false;
+		// assumeTrue(isServerup)
 		assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), "divide by zero should throw");
 	}
 

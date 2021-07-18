@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class MathUtilsTest {
@@ -16,12 +17,21 @@ class MathUtilsTest {
 		mathUtils = new MathUtils();
 	}
 
-	@Test
-	@DisplayName("Testing add Method")
-	void testAdd() {
-		int expected = 2;
-		int actual = mathUtils.add(1, 1);
-		assertEquals(expected, actual, "The add method should add two numbers");
+	@Nested
+	class AddTest {
+		@Test
+		@DisplayName("Testing add Method for +")
+		void testAddPositive() {
+			assertEquals(2, mathUtils.add(1, 1), "The add method should add two numbers");
+
+		}
+
+		@Test
+		@DisplayName("Testing add Method for -")
+		void testAddNegative() {
+			assertEquals(-2, mathUtils.add(-1, -1), "The add method should add two numbers");
+
+		}
 
 	}
 
@@ -29,8 +39,7 @@ class MathUtilsTest {
 	@DisplayName("multiply method")
 	void testMultiply() {
 		// assertEquals(4, mathUtils.multiply(2, 2), "Should return the right product");
-		assertAll(() -> assertEquals(4, mathUtils.multiply(2, 2)), 
-				() -> assertEquals(0, mathUtils.multiply(2, 0)),
+		assertAll(() -> assertEquals(4, mathUtils.multiply(2, 2)), () -> assertEquals(0, mathUtils.multiply(2, 0)),
 				() -> assertEquals(-2, mathUtils.multiply(2, -1)));
 
 	}

@@ -24,14 +24,14 @@ class MathUtilsTest {
 		@Test
 		@DisplayName("when adding two positive numbers")
 		void testAddPositive() {
-			assertEquals(2, mathUtils.add(1, 1), "should return the right sum");
+			assertEquals(2, mathUtils.add(1, 1), () -> "should return the right sum");
 
 		}
 
 		@Test
 		@DisplayName("when adding the two negative numbers")
 		void testAddNegative() {
-			assertEquals(-1, mathUtils.add(-1, -1), "should return the right sum");
+			assertEquals(-1, mathUtils.add(-1, -1), () -> "should return the right sum");
 
 		}
 

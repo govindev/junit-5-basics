@@ -8,8 +8,11 @@ class MathUtilsTest {
 
 	@Test
 	void test() {
-		// fail("Test not implemented");
-		System.out.println("The test ran");
+		MathUtils mathUtils = new MathUtils();
+		int expected = 1;
+		int actual = mathUtils.add(1, 1);
+		assertEquals(expected, actual);
+
 	}
 
 }

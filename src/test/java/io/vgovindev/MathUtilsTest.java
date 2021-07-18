@@ -2,15 +2,30 @@ package io.vgovindev;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MathUtilsTest {
 	MathUtils mathUtils;
 
+	@BeforeAll
+	static void beforeAllInit() {
+		// This method has to be static.
+		// jUnit calls this even before an instance is created for this class
+		// If you don't make it static it won't be call and will fail
+		System.out.println("This needs to run before all");
+	}
+
 	@BeforeEach
 	void init() {
 		mathUtils = new MathUtils();
+	}
+
+	@AfterEach
+	void cleanup() {
+		System.out.println("Cleaning up ...");
 	}
 
 	@Test

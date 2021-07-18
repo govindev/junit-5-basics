@@ -2,37 +2,21 @@ package io.vgovindev;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-// This is to tell junit to create the test instance only once instead of creating for each method
-// In that case beforeAll method need not be static
 class MathUtilsTest {
 	MathUtils mathUtils;
-
-	@BeforeAll
-	static void beforeAllInit() {
-		// This method has to be static.
-		// jUnit calls this even before an instance is created for this class
-		// If you don't make it static it won't be call and will fail
-		System.out.println("This needs to run before all");
-	}
 
 	@BeforeEach
 	void init() {
 		mathUtils = new MathUtils();
 	}
 
-	@AfterEach
-	void cleanup() {
-		System.out.println("Cleaning up ...");
-	}
-
 	@Test
+	@DisplayName("Testing add Method")
 	void testAdd() {
 		int expected = 2;
 		int actual = mathUtils.add(1, 1);
@@ -48,7 +32,16 @@ class MathUtilsTest {
 	@Test
 	void testComputeCircleAre() {
 		assertEquals(314.1592653589793, mathUtils.computeCircleArea(10), "Should return right circle area");
+	}
 
+	@Test
+	@Disabled
+	@DisplayName("TDD method. Shoud not run")
+	void testDisabled() {
+		// When you are doing TDD. Initially you create the test methods and annotate
+		// them with @Disabled so these will be skipped. When you are done writing the
+		// actual logic, you can remove the annotation and have the test in place.
+		fail("This test should be disabled");
 	}
 
 }

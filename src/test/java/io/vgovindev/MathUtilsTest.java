@@ -1,6 +1,7 @@
 package io.vgovindev;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -26,6 +27,7 @@ class MathUtilsTest {
 
 	@Test
 	void testDivide() {
+		// assumeTrue(value); -> Run only the test if this value is true
 		assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), "divide by zero should throw");
 	}
 
@@ -42,6 +44,15 @@ class MathUtilsTest {
 		// them with @Disabled so these will be skipped. When you are done writing the
 		// actual logic, you can remove the annotation and have the test in place.
 		fail("This test should be disabled");
+
 	}
+
+	// Other handy annotations
+	// Conditional Execution
+	// @EnableOnOs(OS.LINUX
+	// @EnableOnJre(JRE.JAVA_11)
+	// @EnableIf
+	// @EnableIfSystemProperty
+	// @EnableIfEnvironmentVariable
 
 }

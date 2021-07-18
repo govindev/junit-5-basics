@@ -8,6 +8,7 @@ class MathUtilsTest {
 
 	@Test
 	void test() {
+		// fail("Test not implemented");
 		System.out.println("The test ran");
 	}
 

@@ -6,7 +6,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+// This is to tell junit to create the test instance only once instead of creating for each method
+// In that case beforeAll method need not be static
 class MathUtilsTest {
 	MathUtils mathUtils;
 
